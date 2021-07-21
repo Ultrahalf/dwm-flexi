@@ -8,7 +8,6 @@ static const int topbar                  = 1;   /* 0 means bottom bar */
 static const int bar_height              = 0;   /* 0 means derive from font, >= 1 explicit height */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
-/* Indicators: see patch/bar_indicators.h for options */
 static int tagindicatortype              = INDICATOR_NONE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
@@ -226,7 +225,7 @@ static Key keys[] = {
 	/* modifier                     key            function                argument */
     /* change the key based on your layout */
 	{ MODKEY,                       XK_d,          spawn,                  {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,				XK_d,		   spawn,				   SHCMD("passmenu") },
+	{ MODKEY|ShiftMask,				      XK_d,		       spawn,				           SHCMD("passmenu") },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_j,          movestack,              {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
@@ -237,15 +236,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_i,          incnmaster,             {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_i,          incnmaster,             {.i = -1 } },
 	{ MODKEY,                       XK_u,          focusurgent,            {0} },
-	{ MODKEY,						XK_e,			spawn,					SHCMD("st -e ranger") },
-	{ MODKEY,						XK_r,			spawn,					SHCMD("st -e ranger") },
-	{ MODKEY|ShiftMask,				XK_h,			spawn,					SHCMD("st -e htop") },
-	{ MODKEY,                       XK_n,           togglealttag,           {0} },
+	{ MODKEY,						            XK_e,			     spawn,					         SHCMD("st -e ranger") },
+	{ MODKEY,						            XK_r,			     spawn,					         SHCMD("st -e ranger") },
+	{ MODKEY|ShiftMask,				      XK_h,			     spawn,					         SHCMD("st -e htop") },
+	{ MODKEY,                       XK_n,          togglealttag,           {0} },
 	/* Audio */
-	{ MODKEY,						XK_p,			spawn,					SHCMD("mpc toggle ; pauseallmpv") },
-	{ MODKEY,						XK_m,			spawn,					SHCMD("st -e ncmpcpp") },
+	{ MODKEY,						            XK_p,			     spawn,					         SHCMD("mpc toggle ; pauseallmpv") },
+	{ MODKEY,						            XK_m,			     spawn,					         SHCMD("st -e ncmpcpp") },
 	/* Movement */
-	{ MODKEY,              			XK_semicolon,	shiftviewclients,       { .i = -1 } },
+	{ MODKEY,              			    XK_semicolon,	 shiftviewclients,       { .i = -1 } },
 	/* Layout */
 	{ MODKEY,                       XK_t,           setlayout,              {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_t,           setlayout,              {.v = &layouts[2]} },
@@ -254,37 +253,30 @@ static Key keys[] = {
 	/* Sticky window */
 	{ MODKEY,                       XK_s,           togglesticky,           {0} },
 	{ MODKEY|ShiftMask,             XK_s,           zoom,                   {0} },
-
-
 	/* stuff */
-	{ MODKEY,						XK_c,		   killclient,			   {0} },
-	{ MODKEY,						XK_space,      spawn,                  {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
-	{ MODKEY,						XK_BackSpace,	spawn,					SHCMD("sysact") },
-	{ MODKEY,           			XK_q,		    quit,				    {1} },
-	{ MODKEY,						XK_w,			spawn,					SHCMD("brave") },
-	{ MODKEY|ShiftMask,				XK_w,			spawn,					SHCMD("st -e sudo nmtui") },
-
-
+	{ MODKEY,						            XK_c,		        killclient,			        {0} },
+	{ MODKEY,						            XK_space,       spawn,                  {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_space,       togglefloating,         {0} },
+	{ MODKEY,						            XK_BackSpace,	  spawn,					        SHCMD("sysact") },
+	{ MODKEY,           			      XK_q,		        quit,				            {1} },
+	{ MODKEY,						            XK_w,			      spawn,					        SHCMD("brave") },
+	{ MODKEY|ShiftMask,				      XK_w,			      spawn,					        SHCMD("st -e sudo nmtui") },
 	/* Movement */
-	{ MODKEY,                       XK_Tab,			view,                   {0} },
-	{ MODKEY,              			XK_a,			shiftviewclients,       { .i = +1 } },
-
+	{ MODKEY,                       XK_Tab,			    view,                   {0} },
+	{ MODKEY,              			    XK_a,			      shiftviewclients,       { .i = +1 } },
 	/* Scratchpad */
-	{ MODKEY,       				XK_Return,     	togglescratch,			{.ui = 0} },
-	{ MODKEY,						XK_slash, 	    togglescratch,	       	{.ui = 1} },
+	{ MODKEY,       				        XK_Return,     	togglescratch,			    {.ui = 0} },
+	{ MODKEY,						            XK_slash, 	    togglescratch,	       	{.ui = 1} },
 	{ MODKEY,                       XK_x,      	    togglescratch,          {.ui = 2 } },
 	{ MODKEY|ShiftMask,             XK_x,      	    removescratch,          {.ui = 2 } },
-	{ MODKEY,                       XK_z,		    setscratch,             {.ui = 2 } },
-
+	{ MODKEY,                       XK_z,		        setscratch,             {.ui = 2 } },
 	/* Monitor */
 	{ MODKEY,                       XK_comma,       focusmon,               {.i = -1 } },
 	{ MODKEY,                       XK_period,      focusmon,               {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,       tagmon,                 {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,      tagmon,                 {.i = +1 } },
-
 	/* Tags */
-	TAGKEYS(                        XK_1,									0)
+	TAGKEYS(                        XK_1,									                  0)
 	TAGKEYS(                        XK_2,                                  	1)
 	TAGKEYS(                        XK_3,                                  	2)
 	TAGKEYS(                        XK_4,                                  	3)
@@ -293,52 +285,48 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                                  	6)
 	TAGKEYS(                        XK_8,                                  	7)
 	TAGKEYS(                        XK_9,                                  	8)
-	{ MODKEY,                       XK_0,			view,                   {.ui = ~SPTAGMASK } },
+	{ MODKEY,                       XK_0,			      view,                   {.ui = ~SPTAGMASK } },
 	{ MODKEY|ShiftMask,             XK_0,          	tag,                    {.ui = ~SPTAGMASK } },
-
 	/* Specialkeys */
-	{ MODKEY,                       XK_grave,		spawn,					SHCMD("dmenuunicode") },
-	{ MODKEY,						XK_Insert,		spawn,					SHCMD("xdotool type $(cat ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
-	{ 0,							XK_Print,		spawn,					SHCMD("maim -i $(xdotool getactivewindow) Pictures/scrots/pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-
-	{ MODKEY,						XK_Print,		spawn,					SHCMD("") },
-	{ MODKEY,						XK_Delete,		spawn,					SHCMD("") },
-	{ MODKEY,						XK_Scroll_Lock,	spawn,					SHCMD("") },
-
+	{ MODKEY,                       XK_grave,		    spawn,					        SHCMD("dmenuunicode") },
+	{ MODKEY,						            XK_Insert,		  spawn,					        SHCMD("xdotool type $(cat ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
+	{ 0,							              XK_Print,		    spawn,					        SHCMD("maim -i $(xdotool getactivewindow) Pictures/scrots/pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ MODKEY,						            XK_Print,		    spawn,					        SHCMD("") },
+	{ MODKEY,						            XK_Delete,		  spawn,					        SHCMD("") },
+	{ MODKEY,						            XK_Scroll_Lock,	spawn,					        SHCMD("") },
 	/* Function keys */
-    { MODKEY,						XK_F1,			spawn,					SHCMD("") },
-	{ MODKEY,						XK_F2,			spawn,					SHCMD("") },
-	{ MODKEY,						XK_F3,			spawn,					SHCMD("") },
-	{ MODKEY,						XK_F4,			spawn,					SHCMD("") },
+  { MODKEY,						            XK_F1,			    spawn,					        SHCMD("") },
+	{ MODKEY,						            XK_F2,			    spawn,					        SHCMD("") },
+	{ MODKEY,						            XK_F3,			    spawn,					        SHCMD("") },
+	{ MODKEY,						            XK_F4,			    spawn,					        SHCMD("") },
 
-	{ MODKEY,						XK_F5,			spawn,					SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,    					XK_F6,		    spawn,					SHCMD("dmenurecord") },
-	{ MODKEY,						XK_F7,		    spawn,					SHCMD("dmenurecord kill") },
-	{ MODKEY,						XK_F8,			spawn,					SHCMD("killall screenkey || screenkey &") },
+	{ MODKEY,						            XK_F5,			    spawn,					        SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+	{ MODKEY,    					          XK_F6,		      spawn,					        SHCMD("dmenurecord") },
+	{ MODKEY,						            XK_F7,		      spawn,					        SHCMD("dmenurecord kill") },
+	{ MODKEY,						            XK_F8,			    spawn,					        SHCMD("killall screenkey || screenkey &") },
 
-	{ MODKEY,						XK_F9,			spawn,					SHCMD("dmenumount") },
-	{ MODKEY,						XK_F10,			spawn,					SHCMD("dmenuumount") },
-	{ MODKEY,						XK_F11,			spawn,					SHCMD("displayselect") },
-    { MODKEY,			            XK_F12,		    spawn,		            SHCMD("remaps & notify-send \"keyboard remapped.. \"") },
-
+	{ MODKEY,						            XK_F9,			    spawn,					        SHCMD("dmenumount") },
+	{ MODKEY,						            XK_F10,			    spawn,					        SHCMD("dmenuumount") },
+	{ MODKEY,						            XK_F11,			    spawn,					        SHCMD("displayselect") },
+  { MODKEY,			                  XK_F12,		      spawn,		              SHCMD("remaps & notify-send \"keyboard remapped.. \"") },
 	/* Fn keys */
-	{ 0,							XF86XK_AudioMute,		spawn,			SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	{ 0, 							XF86XK_AudioRaiseVolume,spawn,			SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-	{ 0, 							XF86XK_AudioLowerVolume,spawn,			SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
-	{ 0, 							XF86XK_AudioPrev,		spawn,			SHCMD("mpc prev") },
-	{ 0, 							XF86XK_AudioNext,		spawn,			SHCMD("mpc next") },
-	{ 0, 							XF86XK_AudioPause,		spawn,			SHCMD("mpc pause") },
-	{ 0, 							XF86XK_AudioPlay,		spawn,			SHCMD("mpc play") },
-	{ 0, 							XF86XK_AudioStop,		spawn,			SHCMD("mpc stop") },
-	{ 0, 							XF86XK_AudioRewind,		spawn,			SHCMD("mpc seek -10") },
-	{ 0, 							XF86XK_AudioForward,	spawn,			SHCMD("mpc seek +10") },
-	{ 0, 							XF86XK_AudioMicMute,	spawn,			SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-	{ 0, 							XF86XK_Launch1,			spawn,			SHCMD("xset dpms force off") },
-	{ 0, 							XF86XK_TouchpadToggle,	spawn,			SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
-	{ 0, 							XF86XK_TouchpadOff,		spawn,			SHCMD("synclient TouchpadOff=1") },
-	{ 0, 							XF86XK_TouchpadOn,		spawn,			SHCMD("synclient TouchpadOff=0") },
-	{ 0, 							XF86XK_MonBrightnessUp,	spawn,			SHCMD("xbacklight -inc 5") },
-	{ 0, 							XF86XK_MonBrightnessDown,spawn,			SHCMD("xbacklight -dec 5") },
+	{ 0,							XF86XK_AudioMute,		          spawn,			            SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ 0, 							XF86XK_AudioRaiseVolume,      spawn,			            SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
+	{ 0, 							XF86XK_AudioLowerVolume,      spawn,			            SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+	{ 0, 							XF86XK_AudioPrev,		          spawn,			            SHCMD("mpc prev") },
+	{ 0, 							XF86XK_AudioNext,		          spawn,			            SHCMD("mpc next") },
+	{ 0, 							XF86XK_AudioPause,		        spawn,			            SHCMD("mpc pause") },
+	{ 0, 							XF86XK_AudioPlay,		          spawn,			            SHCMD("mpc play") },
+	{ 0, 							XF86XK_AudioStop,		          spawn,			            SHCMD("mpc stop") },
+	{ 0, 							XF86XK_AudioRewind,		        spawn,			            SHCMD("mpc seek -10") },
+	{ 0, 							XF86XK_AudioForward,	        spawn,			            SHCMD("mpc seek +10") },
+	{ 0, 							XF86XK_AudioMicMute,	        spawn,			            SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0, 							XF86XK_Launch1,			          spawn,			            SHCMD("xset dpms force off") },
+	{ 0, 							XF86XK_TouchpadToggle,	      spawn,			            SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
+	{ 0, 							XF86XK_TouchpadOff,		        spawn,			            SHCMD("synclient TouchpadOff=1") },
+	{ 0, 							XF86XK_TouchpadOn,		        spawn,			            SHCMD("synclient TouchpadOff=0") },
+	{ 0, 							XF86XK_MonBrightnessUp,	      spawn,			            SHCMD("xbacklight -inc 5") },
+	{ 0, 							XF86XK_MonBrightnessDown,     spawn,			            SHCMD("xbacklight -dec 5") },
 };
 
 
@@ -350,10 +338,11 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,                   Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,                   Button2,        zoom,           {0} }, // middle mouse button on title to swap to master
 	{ ClkTagBar,            0,                   Button3,        toggleview,     {0} }, // right click on tag X to toggle view 
-
 	{ ClkStatusText,        0,                   Button1,        sigstatusbar,   {.i = 1 } },
 	{ ClkStatusText,        0,                   Button2,        sigstatusbar,   {.i = 2 } },
 	{ ClkStatusText,        0,                   Button3,        sigstatusbar,   {.i = 3 } },
+	{ ClkStatusText,        0,                   Button4,        sigstatusbar,   {.i = 4 } },
+	{ ClkStatusText,        0,                   Button5,        sigstatusbar,   {.i = 5 } },
 	{ ClkClientWin,         MODKEY,              Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,              Button2,        togglefloating, {0} }, // mod + middle click for floating mode
 	{ ClkClientWin,         MODKEY,              Button3,        resizemouse,    {0} }, // resize window with mod + rigth click and drag
