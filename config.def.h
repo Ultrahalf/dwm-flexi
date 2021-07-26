@@ -268,8 +268,9 @@ static Key keys[] = {
 	{ MODKEY, 			XK_w,		spawn, 			SHCMD("brave") },
 	{ MODKEY|ShiftMask, 		XK_w, 		spawn, 			SHCMD("st -e sudo nmtui") },
 	{ MODKEY, 			XK_f, 		spawn, 			SHCMD("st -e ranger") },
-	{ MODKEY|ShiftMask, 		XK_p, 		spawn, 			SHCMD("passmenu") },
+	{ MODKEY|ShiftMask, 		XK_p, 		spawn, 			SHCMD("passmenu -i") },
 	{ MODKEY|ShiftMask, 		XK_r, 		spawn, 			SHCMD("dmenuunicode") },
+	{ MODKEY, 			XK_BackSpace,	spawn, 			SHCMD("sysact") },
 
 	/* SCRATCHPAD */
 	{ MODKEY, 			XK_Return, 	togglescratch, 		{.ui = 0} },
