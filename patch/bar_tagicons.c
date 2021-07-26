@@ -8,8 +8,6 @@ tagicon(Monitor *m, int tag)
 	for (c = m->clients; c && (!(c->tags & 1 << tag) || HIDDEN(c)); c = c->next);
 	if (c)
 		return tagicons[ALT_TAGS_DECORATION][tagindex];
-	if (m->alttag)
-		return tagicons[ALTERNATIVE_TAGS][tagindex];
 	return tagicons[DEFAULT_TAGS][tagindex];
 }
 

@@ -56,7 +56,7 @@ draw_tags(Bar *bar, BarArg *a)
 int
 click_tags(Bar *bar, Arg *arg, BarArg *a)
 {
-	int i = 0, x = lrpad / 2;
+	int i = 0, x = 0;
 	Client *c;
 	unsigned int occ = 0;
 	for (c = bar->mon->clients; c; c = c->next)
@@ -67,7 +67,6 @@ click_tags(Bar *bar, Arg *arg, BarArg *a)
 			continue;
 		x += TEXTW(tagicon(bar->mon, i));
 	} while (a->x >= x && ++i < NUMTAGS);
-    for (; i < NUMTAGS && !(occ & 1 << i); ++i);
 	if (i < NUMTAGS) {
 		arg->ui = 1 << i;
 	}
