@@ -1,4 +1,4 @@
-# Personal fork of dwm-flexipatch [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch)
+# Personal fork of [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch)
 ![](https://raw.githubusercontent.com/Ultrahalf/dwm-flexi/master/pictures/scrot.png)
 
 ## Please install libxft-bgra, nerd font.
@@ -7,6 +7,7 @@
 
 - Please move `dwmc` and `layoutmenu.sh` in your PATH
 - Key bindings can either be set using `dwmc` or changed in `config.def.h`
+- Extend/debloat this [patches.def.h](https://github.com/Ultrahalf/dwm-flexi/blob/master/patch/patches.def.h)
 
 ## Included patches
 
