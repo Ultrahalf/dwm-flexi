@@ -1,4 +1,4 @@
-# Personal fork of [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch)
+# Personal fork of [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch) ![visitors](https://visitor-badge.glitch.me/badge?page_id=Ultrahalf.dwm-flexi)
 ![](https://raw.githubusercontent.com/Ultrahalf/dwm-flexi/master/pictures/scrot.png)
 
 ## Please install libxft-bgra, nerd font.
