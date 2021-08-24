@@ -8,20 +8,23 @@ bstack(Monitor *m)
 	int mrest, srest;
 	Client *c;
 
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	int oh, ov, ih, iv;
+	getgaps(m, &oh, &ov, &ih, &iv, &n);
 
 	if (n == 0)
 		return;
 
-	sx = mx = m->wx;
-	sy = my = m->wy;
-	sh = mh = m->wh;
-	sw = mw = m->ww;
+	sx = mx = m->wx + ov;
+	sy = my = m->wy + oh;
+	sh = mh = m->wh - 2*oh;
+	mw = m->ww - 2*ov - iv * (MIN(n, m->nmaster) - 1);
+	sw = m->ww - 2*ov - iv * (n - m->nmaster - 1);
 
 	if (m->nmaster && n > m->nmaster) {
-		sh = mh * (1 - m->mfact);
-		mh = mh * m->mfact;
-		sy = my + mh;
+		sh = (mh - ih) * (1 - m->mfact);
+		mh = (mh - ih) * m->mfact;
+		sx = mx;
+		sy = my + mh + ih;
 	}
 
 	getfacts(m, mw, sw, &mfacts, &sfacts, &mrest, &srest);
@@ -29,10 +32,10 @@ bstack(Monitor *m)
 	for (i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
 		if (i < m->nmaster) {
 			resize(c, mx, my, (mw / mfacts) * c->cfact + (i < mrest ? 1 : 0) - (2*c->bw), mh - (2*c->bw), 0);
-			mx += WIDTH(c);
+			mx += WIDTH(c) + iv;
 		} else {
 			resize(c, sx, sy, (sw / sfacts) * c->cfact + ((i - m->nmaster) < srest ? 1 : 0) - (2*c->bw), sh - (2*c->bw), 0);
-			sx += WIDTH(c);
+			sx += WIDTH(c) + iv;
 		}
 	}
 }

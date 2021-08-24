@@ -3,13 +3,15 @@
 #include "bar_tagicons.c"
 
 #include "bar_dwmblocks.c"
+#include "bar_ewmhtags.c"
 #include "bar_ltsymbol.c"
-/* #include "bar_status.c" */
+//#include "bar_status.c"
 #include "bar_status2d.c"
 #include "bar_statuscmd.c"
 #include "bar_tags.c"
 #include "bar_wintitle.c"
 #include "bar_systray.c"
+#include "bar_layoutmenu.c"
 
 /* Other patches */
 #include "cfacts.c"
@@ -21,7 +23,11 @@
 #include "pertag.c"
 #include "restartsig.c"
 #include "scratchpad.c"
+#include "shiftview.c"
 #include "shiftviewclients.c"
+#include "tapresize.c"
+#include "vanitygaps.c"
+#include "winview.c"
 #include "xrdb.c"
 /* Layouts */
 #include "layout_facts.c"
