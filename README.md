@@ -1,7 +1,7 @@
 # Personal fork of dwm-flexipatch [dwm-flexipatch](https://github.com/bakkeby/dwm-flexipatch)
-![]()
+![](https://raw.githubusercontent.com/Ultrahalf/dwm-flexi/master/pictures/scrot.png)
 
-- Please install libxft-bgra, nerd font.
+## Please install libxft-bgra, nerd font.
 
 ## Configuration 
 
@@ -59,6 +59,6 @@
 - MONOCLE_LAYOUT 
 
 ## TODO
-- [] [tag-previews](https://dwm.suckless.org/patches/tag-previews/)
-- [] [taglabels](https://dwm.suckless.org/patches/taglabels/)
+- [ ] [tag-previews](https://dwm.suckless.org/patches/tag-previews/)
+- [ ] [taglabels](https://dwm.suckless.org/patches/taglabels/)
 
