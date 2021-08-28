@@ -5,7 +5,7 @@
 
 ## Configuration 
 
-- Please move `dwmc` and `layoutmenu.sh` in your PATH
+- Please move scripts to your PATH
 - Key bindings can either be set using `dwmc` or changed in `config.def.h`
 - Extend/debloat this [patches.def.h](https://github.com/Ultrahalf/dwm-flexi/blob/master/patch/patches.def.h)
 
@@ -57,7 +57,9 @@
 - XRDB_PATCH 
 - BSTACK_LAYOUT 
 - TILE_LAYOUT 
-- MONOCLE_LAYOUT 
+- MONOCLE_LAYOUT
+
+- Tag switcher with dmenu
 
 ## TODO
 - [ ] [tag-previews](https://dwm.suckless.org/patches/tag-previews/)
