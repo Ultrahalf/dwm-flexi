@@ -352,6 +352,7 @@ static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
+static void togglebarpadding(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
@@ -387,6 +388,7 @@ static char rawstext[1024];
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
 static int bh;               /* bar geometry */
+static int enablebarpadding = 1;            /* toggle bar padding */
 static int lrpad;            /* sum of left and right padding for text */
 /* Some clients (e.g. alacritty) helpfully send configure requests with a new size or position
  * when they detect that they have been moved to another monitor. This can cause visual glitches
@@ -2318,6 +2320,17 @@ togglebar(const Arg *arg)
 }
 
 void
+togglebarpadding(const Arg *arg)
+{
+	Bar *bar;
+  enablebarpadding = !enablebarpadding;
+	updatebarpos(selmon);
+	for (bar = selmon->bar; bar; bar = bar->next)
+		XMoveResizeWindow(dpy, bar->win, bar->bx, bar->by, bar->bw, bar->bh);
+	arrange(selmon);
+}
+
+void
 togglefloating(const Arg *arg)
 {
 	Client *c = selmon->sel;
@@ -2493,8 +2506,8 @@ updatebarpos(Monitor *m)
 	m->ww = m->mw;
 	m->wh = m->mh;
 	Bar *bar;
-	int y_pad = vertpad;
-	int x_pad = sidepad;
+	int y_pad = enablebarpadding != 0 ? vertpad : 0;
+	int x_pad = enablebarpadding != 0 ? sidepad : 0;
 
 
 	for (bar = m->bar; bar; bar = bar->next) {

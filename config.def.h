@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx       = 1;   /* border pixel of windows */
+static const unsigned int borderpx       = 2;   /* border pixel of windows */
 static const unsigned int snap           = 32;  /* snap pixel */
 static const unsigned int gappih         = 20;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 10;  /* vert inner gap between windows */
@@ -11,8 +11,8 @@ static const int smartgaps_fact          = 1;   /* gap factor when there is only
 static const int showbar                 = 1;   /* 0 means no bar */
 static const int topbar                  = 1;   /* 0 means bottom bar */
 static const int bar_height              = 0;   /* 0 means derive from font, >= 1 explicit height */
-static const int vertpad                 = 0;  /* vertical padding of bar */
-static const int sidepad                 = 0;  /* horizontal padding of bar */
+static const int vertpad                 = 10;  /* vertical padding of bar */
+static const int sidepad                 = 10;  /* horizontal padding of bar */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int showsystray             = 1;   /* 0 means no systray */
 /* Indicators: see patch/bar_indicators.h for options */
@@ -295,6 +295,7 @@ static Key keys[] = {
 	{ Alt,                          XK_g,          incrgaps,               {.i = +1 } },
 	{ Alt|Shift,                    XK_g,          incrgaps,               {.i = -1 } },
 	{ Alt,                          XK_t,          togglegaps,             {0} },
+	{ Alt,                          XK_b,          togglebarpadding,       {0} },
 	{ Alt,                          XK_0,          defaultgaps,            {0} },
 
   /* LAYOUT */
