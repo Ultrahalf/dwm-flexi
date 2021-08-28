@@ -59,9 +59,12 @@
 - TILE_LAYOUT 
 - MONOCLE_LAYOUT
 
-- Tag switcher with dmenu
+## CUSTOM PATCHES
+- TAG SWITCHER WITH DMENU
+- BAR PADDING TOGGLE
 
 ## TODO
 - [ ] [tag-previews](https://dwm.suckless.org/patches/tag-previews/)
 - [ ] [taglabels](https://dwm.suckless.org/patches/taglabels/)
+- [ ] [dynamic swallow](https://dwm.suckless.org/patches/dynamicswallow/)
 
