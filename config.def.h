@@ -119,8 +119,8 @@ static Sp scratchpads[] = {
  */
 
 static char *tagicons[][NUMTAGS] = {
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "", "" },
-	[ALT_TAGS_DECORATION] = { "", "", "", "", "", "", "", "", "" },
+  [DEFAULT_TAGS] = {"", "", "", "", "", "", "", "", ""},
+  [ALT_TAGS_DECORATION] = {"", "", "", "", "", "", "", "", ""},
 };
 
 /* There are two options when it comes to per-client rules:
@@ -148,16 +148,16 @@ static const Rule rules[] = {
 	 *	WM_WINDOW_ROLE(STRING) = role
 	 *	_NET_WM_WINDOW_TYPE(ATOM) = wintype
 	 */
-	RULE(.wintype = WTYPE "DIALOG", .isfloating = 1)
-	RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
-	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
-	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
-	RULE(.class = "Gimp", .tags = 1 << 4)
-	RULE(.class = "firefox", .tags = 1 << 3)
-	RULE(.class = "discord", .tags = 1 << 5)
-	RULE(.class = "signal", .tags = 1 << 5)
-	RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
-	RULE(.instance = "spcalc", .tags = SPTAG(1), .isfloating = 1)
+  RULE(.wintype = WTYPE "DIALOG",.isfloating = 1) 
+  RULE(.wintype = WTYPE "UTILITY", .isfloating = 1)
+  RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
+  RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
+  RULE(.class = "Gimp", .tags = 1 << 4, .switchtag = 3)
+  RULE(.class = "firefox", .tags = 1 << 2, .switchtag = 4)
+  RULE(.class = "Pcmanfm", .tags = 1 << 2, .switchtag = 4)
+  RULE(.class = "Signal", .tags = 1 << 3, .switchtag = 3)
+  RULE(.instance = "spterm", .tags = SPTAG(0), .isfloating = 1)
+  RULE(.instance = "spcalc", .tags = SPTAG(1),.isfloating = 1)
 };
 
 static const MonitorRule monrules[] = {
@@ -253,125 +253,125 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
 	/* modifier                     key            function                argument */
-	{ Super,                        XK_Return,      zoom,                   {0} },
-	{ Super, 			            XK_space, 	    spawn, 			        {.v = termcmd } },
-	{ Super, 			            XK_r, 		    spawn, 			        {.v = dmenucmd } },
-	{ Super, 			            XK_n, 		    focusstack, 		    {.i = +1 } },
-	{ Super|Shift, 		            XK_n, 		    movestack, 		        {.i = +1 } },
-	{ Super, 			            XK_e, 		    focusstack, 		    {.i = -1 } },
-	{ Super|Shift, 		            XK_e, 		    movestack, 		        {.i = -1 } },
-	{ Super, 			            XK_k, 		    setmfact, 		        {.f = -0.05} },
-	{ Super|Shift,     	            XK_k,          	setcfact,               {.f = -0.25} },
-	{ Super, 			            XK_h, 		    setmfact, 		        {.f = +0.05} },
-	{ Super|Shift,     	            XK_h,          	setcfact,               {.f = +0.25} },
-	{ Super, 			            XK_b, 		    togglebar, 		        {0} },
-	{ Super,     			        XK_b,          	setcfact,               {0} }, // same binding
-	{ Super, 			            XK_u, 		    focusurgent, 		    {0} },
-	{ Super,                        XK_o,           winview,                {0} },
-	{ Super|Shift,                  XK_f,          	togglefakefullscreen,  	{0} },
-	{ Super, 			            XK_equal, 	    incnmaster, 		    {.i = +1 } },
-	{ Super, 			            XK_minus, 	    incnmaster, 		    {.i = -1 } },
-	{ Super, 			            XK_q, 		    killclient, 		    {0} },
-	{ Super|Shift,                  XK_q,           quit,                   {1} },
-	{ Super, 			            XK_w,		    spawn, 			        SHCMD("brave") },
-	{ Super|Shift, 		            XK_w, 		    spawn, 			        SHCMD("alacritty -e sudo nmtui") },
-	{ Super, 			            XK_f, 		    spawn, 			        SHCMD("alacritty -e ranger") },
-	{ Super|Shift, 		            XK_p, 		    spawn, 			        SHCMD("passmenu -i") },
-	{ Super|Shift, 		            XK_r, 		    spawn, 			        SHCMD("dmenuunicode") },
-	{ Super,						XK_BackSpace,	spawn, 			        SHCMD("sysact") },
+  {Super,                          XK_Return,    zoom,                   {0}},
+  {Super,                          XK_space,     spawn,                  {.v = termcmd}},
+  {Super,                          XK_r,         spawn,                  {.v = dmenucmd}},
+  {Super,                          XK_n,         focusstack,             {.i = +1}},
+  {Super | Shift,                  XK_n,         movestack,              {.i = +1}},
+  {Super,                          XK_e,         focusstack,             {.i = -1}},
+  {Super | Shift,                  XK_e,         movestack,              {.i = -1}},
+  {Super,                          XK_k,         setmfact,               {.f = -0.05}},
+  {Super | Shift,                  XK_k,         setcfact,               {.f = -0.25}},
+  {Super,                          XK_h,         setmfact,               {.f = +0.05}},
+  {Super | Shift,                  XK_h,         setcfact,               {.f = +0.25}},
+  {Super,                          XK_b,         togglebar,              {0}},
+  {Super,                          XK_b,         setcfact,               {0}}, // same binding
+  {Super,                          XK_u,         focusurgent,            {0}},
+  {Super,                          XK_o,         winview,                {0}},
+  {Super | Shift,                  XK_f,         togglefakefullscreen,   {0}},
+  {Super,                          XK_equal,     incnmaster,             {.i = +1}},
+  {Super,                          XK_minus,     incnmaster,             {.i = -1}},
+  {Super,                          XK_q,         killclient,             {0}},
+  {Super | Shift,                  XK_q,         quit,                   {1}},
+  {Super,                          XK_w,         spawn,                  SHCMD("brave")},
+  {Super | Shift,                  XK_w,         spawn,                  SHCMD("alacritty -e sudo nmtui")},
+  {Super,                          XK_f,         spawn,                  SHCMD("alacritty -e lf-run")},
+  {Super | Shift,                  XK_p,         spawn,                  SHCMD("passmenu -i")},
+  {Super | Shift,                  XK_r,         spawn,                  SHCMD("dmenuunicode")},
+  {Super,                          XK_BackSpace, spawn,                  SHCMD("sysact")},
 
-	/* AUDIO */
-	{ Super, 			            XK_p, 		    spawn, 			        SHCMD("mpc toggle ; pauseallmpv") },
-	{ Super, 			            XK_m, 		    spawn, 			        SHCMD("alacritty -e ncmpcpp") },
-	{ Super|Shift,		            XK_m,		    spawn,			        SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+  /* AUDIO */
+  {Super,                          XK_p,         spawn,                  SHCMD("mpc toggle ; pauseallmpv")},
+  {Super,                          XK_m,         spawn,                  SHCMD("alacritty -e ncmpcpp-ueberzug")},
+  {Super|Shift,                    XK_m,         spawn,                  SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)")},
 
-	/* MOVEMENT */
-	{ Super,                        XK_Tab,         view,                   {0} },
-	{ Super, 			            XK_a, 		    shiftviewclients, 	    { .i = -1 } },
-	{ Super, 			            XK_t, 		    shiftviewclients, 	    { .i = +1 } },
-	{ Alt,                          XK_space,       spawn,                  SHCMD("activatewindow.sh") },
+  /* MOVEMENT */
+  {Super,                          XK_Tab,       view,                   {0}},
+  {Super,                          XK_a,         shiftviewclients,       {.i = -1}},
+  {Super,                          XK_t,         shiftviewclients,       {.i = +1}},
+  {Alt,                            XK_space,     spawn,                  SHCMD("activatewindow.sh")},
 
   /* GAPS */
-	{ Alt,                          XK_g,          incrgaps,               {.i = +1 } },
-	{ Alt|Shift,                    XK_g,          incrgaps,               {.i = -1 } },
-	{ Alt,                          XK_t,          togglegaps,             {0} },
-	{ Alt,                          XK_b,          togglebarpadding,       {0} },
-	{ Alt,                          XK_0,          defaultgaps,            {0} },
+  {Alt,                            XK_g,         incrgaps,               {.i = +1}},
+  {Alt|Shift,                      XK_g,         incrgaps,               {.i = -1}},
+  {Alt,                            XK_t,         togglegaps,             {0}},
+  {Alt,                            XK_b,         togglebarpadding,       {0}},
+  {Alt,                            XK_0,         defaultgaps,            {0}},
 
   /* LAYOUT */
-	{ Alt,                          XK_q,          togglefakefullscreen,   {0} },
-	{ Alt,                          XK_w,          setlayout,              {.v = &layouts[0]} },
-	{ Alt,                          XK_f,          setlayout,              {.v = &layouts[1]} },
-	{ Alt,                          XK_p,          setlayout,              {.v = &layouts[2]} },
-	{ Super|Shift,                  XK_space,      togglefloating,         {0} },
-	{ Alt,           		        XK_x, 	       cyclelayout,            {.i = +1 } },
-	{ Alt,           		        XK_z, 	       cyclelayout,            {.i = -1 } },
+  {Alt,                             XK_q,        togglefakefullscreen,   {0}},
+  {Alt,                             XK_w,        setlayout,              {.v = &layouts[0]}},
+  {Alt,                             XK_f,        setlayout,              {.v = &layouts[1]}},
+  {Alt,                             XK_p,        setlayout,              {.v = &layouts[2]}},
+  {Super|Shift,                     XK_space,    togglefloating,         {0}},
+  {Alt,                             XK_x,        cyclelayout,            {.i = +1}},
+  {Alt,                             XK_z,        cyclelayout,            {.i = -1}},
 
-	/* SCRATCHPAD */
-	{ Super, 			            XK_Return, 	   togglescratch, 		   {.ui = 0} },
-	{ Super, 			            XK_slash, 	   togglescratch, 		   {.ui = 1} },
-	{ Super, 			            XK_x, 		   togglescratch, 		   {.ui = 2 } },
-	{ Super, 			            XK_z, 		   setscratch, 		       {.ui = 2 } },
-	{ Super|Shift, 		            XK_z, 		   removescratch, 		   {.ui = 2 } },
-	{ Super,                        XK_v,          view,                   {.ui = ~SPTAGMASK } },
-	//{ Super|Shift,                  XK_0,          tag,                    {.ui = ~SPTAGMASK } },
+  /* SCRATCHPAD */
+  {Super,                           XK_Return,   togglescratch,          {.ui = 0}},
+  {Super,                           XK_slash,    togglescratch,          {.ui = 1}},
+  {Super,                           XK_x,        togglescratch,          {.ui = 2}},
+  {Super,                           XK_z,        setscratch,             {.ui = 2}},
+  {Super|Shift,                     XK_z,        removescratch,          {.ui = 2}},
+  {Super,                           XK_v,        view,                   {.ui = ~SPTAGMASK}},
+  /* { Super|Shift,                    XK_0,          tag, {.ui = ~SPTAGMASK } }, */
 
-	/* MONITOR */
-	{ Super,                        XK_comma,      focusmon,               {.i = -1 } },
-	{ Super,                        XK_period,     focusmon,               {.i = +1 } },
-	{ Super|Shift,                  XK_comma,      tagmon,                 {.i = -1 } },
-	{ Super|Shift,                  XK_period,     tagmon,                 {.i = +1 } },
+  /* MONITOR */
+  {Super,                           XK_comma,    focusmon,               {.i = -1}},
+  {Super,                           XK_period,   focusmon,               {.i = +1}},
+  {Super|Shift,                     XK_comma,    tagmon,                 {.i = -1}},
+  {Super|Shift,                     XK_period,   tagmon,                 {.i = +1}},
 
-	TAGKEYS(                        XK_1,                                  0)
-	TAGKEYS(                        XK_2,                                  1)
-	TAGKEYS(                        XK_3,                                  2)
-	TAGKEYS(                        XK_4,                                  3)
-	TAGKEYS(                        XK_5,                                  4)
-	TAGKEYS(                        XK_6,                                  5)
-	TAGKEYS(                        XK_7,                                  6)
-	TAGKEYS(                        XK_8,                                  7)
-	TAGKEYS(                        XK_9,                                  8)
+  TAGKEYS(XK_1, 0)
+  TAGKEYS(XK_2, 1)
+  TAGKEYS(XK_3, 2)
+  TAGKEYS(XK_4, 3)
+  TAGKEYS(XK_5, 4)
+  TAGKEYS(XK_6, 5)
+  TAGKEYS(XK_7, 6)
+  TAGKEYS(XK_8, 7)
+  TAGKEYS(XK_9, 8)
 
-	/* SPECIALKEYS */
-	{ Super, 			            XK_Insert, 	    spawn, 			        SHCMD("xdotool type $(cat ~/.local/share/larbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
-	{ 0, 			                XK_Print, 	    spawn, 			        SHCMD("maimpick") },
-	{ Super, 	  	                XK_Print, 	    spawn, 			        SHCMD("maim -i $(xdotool getactivewindow) Pictures/scrots/pic-full-$(date '+%y%m%d-%H%M-%S').png") },
-	//{ Super, 			            XK_Scroll_Lock, spawn, 			        SHCMD("") },
+  /* SPECIALKEYS */
+  {Super,                         XK_Insert,     spawn,                   SHCMD("xdotool type $(cat ~/.local/share/larbs/snippets | dmenu -i -l 50 " "| cut -d' ' -f1)")},
+  {0,                             XK_Print,      spawn,                   SHCMD("maimpick")},
+  {Super,                         XK_Print,      spawn,                   SHCMD("maim -i $(xdotool getactivewindow) Pictures/scrots/pic-full-$(date " "'+%y%m%d-%H%M-%S').png")},
+  /* { Super, 			                  XK_Scroll_Lock, spawn,                  SHCMD("")}, */
 
-	/* FUNCTION KEYS */
-	//{ Super, 			             XK_F1,	 	     spawn, 			    SHCMD("") },
-	//{ Super, 			             XK_F2,	 	     spawn, 			    SHCMD("") },
-	//{ Super, 			             XK_F3,	 	     spawn, 			    SHCMD("") },
-	{ Super, 			             XK_F4,          xrdb,                  {.v = NULL } },
+  /* FUNCTION KEYS */
+  /* { Super, 			                  XK_F1,	 	     spawn,                   SHCMD("")}, */
+  /* { Super, 			                  XK_F2,         spawn,                   SHCMD("") }, */
+  /* { Super, 			                  XK_F3,         spawn, 			            SHCMD("") }, */
+  {Super,                         XK_F4,         xrdb, {.v = NULL}},
 
-	{ Super, 			             XK_F5,	 	     spawn, 			    SHCMD("alacritty -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	{ Super, 			             XK_F6,	 	     spawn, 			    SHCMD("dmenurecord") },
-	{ Super, 			             XK_F7,	 	     spawn, 			    SHCMD("dmenurecord kill") },
-	{ Super, 			             XK_F8,	 	     spawn, 			    SHCMD("killall screenkey || screenkey &") },
+  {Super,                         XK_F5,         spawn,                   SHCMD("alacritty -e pulsemixer; kill -44 $(pidof dwmblocks)")},
+  {Super,                         XK_F6,         spawn,                   SHCMD("dmenurecord")},
+  {Super,                         XK_F7,         spawn,                   SHCMD("dmenurecord kill")},
+  /* {Super,                         XK_F8,         spawn,                   SHCMD("")}, */
 
-	{ Super, 			             XK_F9,	 	     spawn, 			    SHCMD("dmenumount") },
-	{ Super, 			             XK_F10, 	     spawn, 			    SHCMD("dmenuumount") },
-	{ Super, 			             XK_F11, 	     spawn, 			    SHCMD("displayselect") },
-	{ Super, 			             XK_F12, 	     spawn, 			    SHCMD("remaps & notify-send \"keyboard remapped.. \"") },
+  {Super,                         XK_F9,         spawn,                   SHCMD("dmenumount")},
+  {Super,                         XK_F10,        spawn,                   SHCMD("dmenuumount")},
+  {Super,                         XK_F11,        spawn,                   SHCMD("displayselect")},
+  {Super,                         XK_F12,        spawn,                   SHCMD("remaps & notify-send \"keyboard remapped.. \"")},
 
-	/* FN KEYS */
-	{ 0, 	           XF86XK_AudioMute,		     spawn, 	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	{ 0, 	           XF86XK_AudioRaiseVolume,      spawn, 	SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
-	{ 0, 	           XF86XK_AudioLowerVolume,      spawn, 	SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
-	{ 0, 	           XF86XK_AudioPrev,		     spawn, 	SHCMD("mpc prev") },
-	{ 0, 	           XF86XK_AudioNext,		     spawn, 	SHCMD("mpc next") },
-	{ 0, 	           XF86XK_AudioPause,		     spawn, 	SHCMD("mpc pause") },
-	{ 0, 	           XF86XK_AudioPlay,		     spawn, 	SHCMD("mpc play") },
-	{ 0, 	           XF86XK_AudioStop,		     spawn, 	SHCMD("mpc stop") },
-	{ 0, 	           XF86XK_AudioRewind,		     spawn, 	SHCMD("mpc seek -10") },
-	{ 0, 	           XF86XK_AudioForward,			 spawn, 	SHCMD("mpc seek +10") },
-	{ 0, 	           XF86XK_AudioMicMute,	         spawn, 	SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-	{ 0, 	           XF86XK_Launch1,			     spawn, 	SHCMD("xset dpms force off") },
-	{ 0, 	           XF86XK_TouchpadToggle,	     spawn, 	SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
-	{ 0, 	           XF86XK_TouchpadOff,			 spawn, 	SHCMD("synclient TouchpadOff=1") },
-	{ 0, 	           XF86XK_TouchpadOn, 		     spawn, 	SHCMD("synclient TouchpadOff=0") },
-	{ 0, 	           XF86XK_MonBrightnessUp,	     spawn, 	SHCMD("xbacklight -inc 5") },
-	{ 0, 	           XF86XK_MonBrightnessDown,     spawn, 	SHCMD("xbacklight -dec 5") },
+  /* FN KEYS */
+  {0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)")},
+  {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)")},
+  {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)")},
+  {0, XF86XK_AudioPrev, spawn, SHCMD("mpc prev")},
+  {0, XF86XK_AudioNext, spawn, SHCMD("mpc next")},
+  {0, XF86XK_AudioPause, spawn, SHCMD("mpc pause")},
+  {0, XF86XK_AudioPlay, spawn, SHCMD("mpc play")},
+  {0, XF86XK_AudioStop, spawn, SHCMD("mpc stop")},
+  {0, XF86XK_AudioRewind, spawn, SHCMD("mpc seek -10")},
+  {0, XF86XK_AudioForward, spawn, SHCMD("mpc seek +10")},
+  {0, XF86XK_AudioMicMute, spawn, SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle")},
+  {0, XF86XK_Launch1, spawn, SHCMD("xset dpms force off")},
+  {0, XF86XK_TouchpadToggle, spawn, SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || " "synclient TouchpadOff=1")},
+  {0, XF86XK_TouchpadOff, spawn, SHCMD("synclient TouchpadOff=1")},
+  {0, XF86XK_TouchpadOn, spawn, SHCMD("synclient TouchpadOff=0")},
+  {0, XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 5")},
+  {0, XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 5")},
 };
 
 
